@@ -32,23 +32,24 @@ int main(int argc, char *argv[])
         printf("Dont input more than 20 integers!\n");
         return 1;
     }
+    int n = argc - 1;
+    int*arrl= (int*)malloc(4*n);
+    /* Usew mallow() allocate memory space for the array of integers*/
+    int *arr = (int*)malloc(100);
+
     /* Problem: argv[] is an array of 'char', but we need arr[] is an array of 'int'.We need to do conversion.*/
-    int arr[] =
-    {
-        0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0
-    };
-    
-    for (int i=1; i<argc; ++i)
+   
+    for (int i=0; i < n; ++i)
     {
         /* convert array of 'char' into array of 'int'*/
-        arr[i-1] = atoi(argv[i]);
+        arr[i] = atoi(argv[i+1]);
     }
 
-    int n = argc - 1 ;
+   
     int s = find_max(n, arr);
    
     printf("The max value is: %d\n", s);
-
+    free(arr);
+    arr = NULL;
     return 0;
 } 
