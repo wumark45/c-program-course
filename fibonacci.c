@@ -35,11 +35,7 @@ int main(int argc, char* argv[])
             return 1;
         }
         int f = fibonacci(n);
-        if (n == 1)
-        {
-            printf("The first Fibonacci number is: %d\n",f);
-        }
-        else
+        
         {
             printf("The %d-th Fibonacci number is: %d\n",n,f);
 
