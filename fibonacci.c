@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
 {
     while (1)
     {
-        printf("Which fibonacci number do you want to know?\n");
+        printf("Which Fibonacci number do you want to know?\n");
    
         int n;
         scanf("%d", &n);
@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
         printf("Your input is: %d\n", n);
         if (n < 0)
         {
-            printf("Please input a positive intergers/n");
+            printf("Please input a positive interger./n");
             return 1;
         }
         int f = fibonacci(n);
