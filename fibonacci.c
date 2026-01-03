@@ -37,30 +37,26 @@ int main(int argc, char* argv[])
         }
         int f = fibonacci(n);
         
+        printf("The %d-th Fibonacci number is: %d\n",n,f);
+
+        printf("Do you want to continue? Y/N\n");
+        char c;
+        scanf(" %c", &c);
+        if (c == 'Y')
         {
-            printf("The %d-th Fibonacci number is: %d\n",n,f);
-
-            printf("Do you want to continue? Y/N\n");
-
-             char c;
-            scanf(" %c", &c);
-            if (c == 'Y')
-            {
-                printf("Good lets continue!\n");
-               
-            }
-            else if (c == 'N')
-            { 
-                printf("Good bye!\n");
-                break;
-            }
-            else 
-            {
-                printf("Sorry, I do not understand this input\n");
-                break;
-            }
-         }    
-    }
+            printf("Good lets continue!\n");
+        }
+        else if (c == 'N')
+        { 
+            printf("Good bye!\n");
+            break;
+        }
+        else 
+        {
+            printf("Sorry, I do not understand this input\n");
+            break;
+        }
+     }    
     return 0;
 }
 
