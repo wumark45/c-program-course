@@ -13,6 +13,7 @@ int fibonacci(int n)
     {
          arr[i] = arr[i-1] + arr [i-2];
     }
+
     int s = arr[n];
     free(arr);
     arr = NULL;
