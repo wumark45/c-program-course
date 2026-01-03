@@ -11,7 +11,7 @@ int fibonacci(int n)
     arr[1] = 1;
     for (int i=2; i <= n; ++i)
     {
-         arr[i] = arr[i-1] + arr [i-2];
+         arr[i] = arr[i-1] + arr[i-2];
     }
 
     int s = arr[n];
@@ -32,7 +32,7 @@ int main(int argc, char* argv[])
         printf("Your input is: %d\n", n);
         if (n < 0)
         {
-            printf("Please input a positive interger./n");
+            printf("Please input a positive interger.\n");
             return 1;
         }
         int f = fibonacci(n);
@@ -54,6 +54,7 @@ int main(int argc, char* argv[])
         else 
         {
             printf("Sorry, I do not understand this input\n");
+            printf("Goodbye\n");
             break;
         }
      }    
