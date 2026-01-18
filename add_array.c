@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
         b[i] = argv[2][length2-1-i]-'0';
        // printf("b[%d]=%d\n", i, b[i]);
     }
-    printf("%d,%d\n", length1, length2);
+   // printf("%d,%d\n", length1, length2);
 
     int length3 = (length1 > length2) ? length1+1 : length2+1;
     int *r = (int *) malloc(length3 * 4);
