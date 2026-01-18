@@ -20,10 +20,10 @@ int add(int a[],int len1,  int b[], int len2, int r[], int len3)
          }
          r[i] = t % 10;
     } 
-
+    int * x = (len1 > len2) ? a : b;
     for (int i=len; i<len3-1; ++i)
     {
-        int t =a[i] + p[i];
+        int t =x[i] + p[i];
         if (t >= 10)
         {
             p[i+1] = 1;
@@ -58,8 +58,6 @@ int main(int argc, char *argv[])
     {
         b[i] = argv[2][length2-1-i]-'0';
        // printf("b[%d]=%d\n", i, b[i]);
-
-   
     }
     printf("%d,%d\n", length1, length2);
 
@@ -69,9 +67,9 @@ int main(int argc, char *argv[])
 
     for (int i=length3-1; i>=0; --i)
     {
-        printf("%d\n", r[i]);
+        printf("%d", r[i]);
     }
-
+    printf("\n");
     free(a); a = NULL;
     free(b); b = NULL;
     free(r); r = NULL;
