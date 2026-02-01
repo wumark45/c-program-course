@@ -14,9 +14,9 @@ int array_insert(int *b, int len, int y)
             break;
         }
     }
-    printf("j=%d\n", j);
+   // printf("j=%d\n", j);
     
-    for( int i=len-2; i>=j; --i)
+    for(int i=len-2; i>=j; --i)
     {
         b[i+1] =b[i];
     }
@@ -24,6 +24,16 @@ int array_insert(int *b, int len, int y)
     b[j]=y;
     return 0;
 
+}
+
+int print_array(int *a, int len)
+{
+    for (int i=0; i<len; ++i)
+    {
+        printf("%d ", a[i]);
+    }
+    printf("\n");
+    return 0;
 }
 
 int main(int argc, char *argv[])
@@ -59,7 +69,7 @@ int main(int argc, char *argv[])
   
     a[0] = atoi(&argv[1][0]);
 
-    int j = 1;
+    int j =length -1;
 
     for (int i = 0; i < n; ++i)
     {  
@@ -69,22 +79,13 @@ int main(int argc, char *argv[])
              j += 1; 
         }
     }
-  
-    for (int i=0; i<length+1; ++i)
-    {
-        printf("%d ", a[i]);
-    }
-    printf("\n");
+    printf("Before insertion\n");
+    print_array(a, length+1);
 
     int x = atoi(argv[2]);
     array_insert(a, length+1,  x);
- 
-    for (int i=0; i<length+1; ++i)
-    {
-        printf("%d ", a[i]);
-    }
-    printf("\n");
-
+    printf("After insertion\n");
+    print_array(a, length+1);
 
     free(a); a = NULL;
     return 0;
