@@ -5,7 +5,7 @@
 int array_insert(int *b, int len, int y)
 {
     /* insert y into b */
-    int j=0;
+    int j=len-1;
     for(int i=0; i<len; ++i)
     {
         if(b[i]>y)
@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
   
     a[0] = atoi(&argv[1][0]);
 
-    int j =length -1;
+    int j =1;
 
     for (int i = 0; i < n; ++i)
     {  
