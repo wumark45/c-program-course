@@ -5,9 +5,21 @@
 int print_file(char * filename)
 {
     FILE *fp=fopen(filename, "r");
+
+    if (fp ==NULL)
+    {
+    printf("Error: open file failed.\n");
+    return 1;
+    }
     char buf[255];
-    fgets(buf,255,fp);
+    char*p=fgets(buf,sizeof(buf),fp);
+    while(p!=NULL)
+    {
+   // fgets(buf, sizeof(buf),fp);
     printf("%s\n",buf);
+    p=fgets(buf, sizeof(buf),fp);
+    }
+    printf("finished reading the file!\n");
     fclose(fp);
     return 0;
 }
