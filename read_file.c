@@ -8,16 +8,26 @@ int print_file(char * filename)
 
     if (fp ==NULL)
     {
-    printf("Error: open file failed.\n");
-    return 1;
+        printf("Error: open file failed.\n");
+        return 1;
     }
     char buf[255];
-    char*p=fgets(buf,sizeof(buf),fp);
+   
+    char*p=fgets(buf,sizeof(buf),fp);   
     while(p!=NULL)
     {
    // fgets(buf, sizeof(buf),fp);
-    printf("%s\n",buf);
-    p=fgets(buf, sizeof(buf),fp);
+       // printf("%s\n",buf);
+        
+        char *token =strtok(buf,",");
+        while(token!=NULL)
+        {
+            int val=atoi(token);
+            printf("%d ",val);
+            token=strtok(NULL,",");
+        }
+        printf("\n");
+        p=fgets(buf,sizeof(buf),fp);
     }
     printf("finished reading the file!\n");
     fclose(fp);
