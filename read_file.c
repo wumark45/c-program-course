@@ -4,30 +4,30 @@
 
 int print_file(char * filename)
 {
-    FILE *fp=fopen(filename, "r");
+    FILE *fp = fopen(filename, "r");
 
-    if (fp ==NULL)
+    if (fp == NULL)
     {
         printf("Error: open file failed.\n");
         return 1;
     }
     char buf[255];
    
-    char*p=fgets(buf,sizeof(buf),fp);   
-    while(p!=NULL)
+    char *p = fgets(buf,sizeof(buf),fp);   
+    while(p != NULL)
     {
-   // fgets(buf, sizeof(buf),fp);
+   // fgets(buf,sizeof(buf),fp);
        // printf("%s\n",buf);
         
-        char *token =strtok(buf,",");
-        while(token!=NULL)
+        char *token = strtok(buf,",");
+        while(token != NULL)
         {
             int val=atoi(token);
             printf("%d ",val);
             token=strtok(NULL,",");
         }
         printf("\n");
-        p=fgets(buf,sizeof(buf),fp);
+        p = fgets(buf,sizeof(buf),fp);
     }
     printf("finished reading the file!\n");
     fclose(fp);
