@@ -1,9 +1,9 @@
-pinclude<stdio.h>
+#include<stdio.h>
 #include<string.h>
-#include<stblib.h>
-#include"my_array.h"
+#include<stdlib.h>
+#include "myarray.h"
 
-int print_file(char * filename)
+int process_file(char * filename)
 {
     FILE *fp = fopen(filename, "r");
 
@@ -17,19 +17,19 @@ int print_file(char * filename)
     char *p = fgets(buf,sizeof(buf),fp);   
     while(p != NULL)
     {
-   // fgets(buf,sizeof(buf),fp);
-       // printf("%s\n",buf);
+        int a[10];
+        int len = 0;
         
         char *token = strtok(buf,",");
         while(token != NULL)
         {
             a[len]=atoi(token);
-            printf("%d ",val);
+            len += 1;
             token=strtok(NULL,",");
         }
         printf("\n");
         sort_array(a, len);
-        process_array(a, len);
+        print_array(a, len);
 
         p = fgets(buf,sizeof(buf),fp);
     }
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
         return 1;
     }
     char * filename = argv[1];
-    print_file(filename);
+    process_file(filename);
 
     return 0;
 }
