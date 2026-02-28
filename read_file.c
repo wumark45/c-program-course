@@ -1,6 +1,7 @@
-#include<stdio.h>
+pinclude<stdio.h>
 #include<string.h>
-#include<stdlib.h>
+#include<stblib.h>
+#include"my_array.h"
 
 int print_file(char * filename)
 {
@@ -22,11 +23,14 @@ int print_file(char * filename)
         char *token = strtok(buf,",");
         while(token != NULL)
         {
-            int val=atoi(token);
+            a[len]=atoi(token);
             printf("%d ",val);
             token=strtok(NULL,",");
         }
         printf("\n");
+        sort_array(a, len);
+        process_array(a, len);
+
         p = fgets(buf,sizeof(buf),fp);
     }
     printf("finished reading the file!\n");
