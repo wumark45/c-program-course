@@ -1,7 +1,7 @@
 #include<stdlib.h>
 #include<stdio.h>
 
-int print_star(int row)
+int print_star(int row,char character)
 {
     for(int i=0; i<row; ++i)
     {
@@ -13,7 +13,7 @@ int print_star(int row)
         }
         for(int j=0; j<number; ++j)
         {              
-            printf("*");
+            printf("%c", character);
         }
         printf("\n");
     }
@@ -22,8 +22,8 @@ int print_star(int row)
 
 int main(int argc, char *argv[])
 {
-    int a =atoi(argv[1]);
-
-    print_star(a);
+    int a = atoi(argv[1]);
+    char v = *argv[2]; 
+    print_star(a,v);
     return 0;
 }
