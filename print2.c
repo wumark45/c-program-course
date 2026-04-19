@@ -8,7 +8,7 @@ void print2(int *arr, int n)
         if (arr[i] % 5 ==0) break;
         if (i % 2 == 1)
         {
-            printf("%d ", arr[i]*factor);
+            printf("%d ", arr[i]);
         }
     }
     printf("\n");
