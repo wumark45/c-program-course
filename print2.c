@@ -5,13 +5,10 @@ void print2(int *arr, int n, int factor)
 {
     for (int i = 0; i < n; i++)
     {
+        if (arr[i] % 5 ==0) break;
         if (i % 2 == 1)
         {
             printf("%d ", arr[i]*factor);
-        }
-        if (arr[i] % 5 == 0)
-        {
-            break;
         }
     }
     printf("\n");
@@ -33,6 +30,5 @@ int main(int argc, char *argv[])
         arr[i] = atoi(argv[i+1]);
     }
     print2(arr, n, 1);
-    print2(arr, n, 2); 
     return 0;
 }
