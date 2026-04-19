@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void print2(int *arr, int n, int factor)
+void print2(int *arr, int n)
 {
     for (int i = 0; i < n; i++)
     {
@@ -29,6 +29,6 @@ int main(int argc, char *argv[])
     {
         arr[i] = atoi(argv[i+1]);
     }
-    print2(arr, n, 1);
+    print2(arr, n);
     return 0;
 }
