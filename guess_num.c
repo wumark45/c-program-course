@@ -12,7 +12,7 @@ int main(int argc,char * argv[])
     }
     correctNumber = atoi(argv[1]);
     int c;
-    while (correctNumber != userGuess)
+    while (1)
     { 
          printf("your guess:");
          int x=scanf("%d",&c);
@@ -25,6 +25,7 @@ int main(int argc,char * argv[])
          if(userGuess == correctNumber)
          {
               printf("correct.\n");
+              break;
          }
          else if(userGuess > correctNumber)
          { 
