@@ -20,18 +20,54 @@ void reset_terminal_mode(struct termios *old_settings)
     tcsetattr(STDIN_FILENO, TCSANOW, old_settings);
 }
 
-void draw (int spaceRow, int spaceColumn, int row, int column)
+void draw (int rotation, int spaceRow, int spaceColumn, int row, int column)
 {
      int arrx[4];
      int arry[4];
-     arrx[0] = spaceRow;
-     arry[0] = spaceColumn;
-     arrx[1] = spaceRow + 1;
-     arry[1] = spaceColumn;
-     arrx[2] = spaceRow + 2;
-     arry[2] = spaceColumn;
-     arrx[3] = spaceRow + 2;
-     arry[3] = spaceColumn + 1;
+     if(rotation==0)
+     {
+          arrx[0]=spaceRow;
+          arry[0]=spaceColumn;
+          arrx[1]=spaceRow+1;
+          arry[1]=spaceColumn;
+          arrx[2]=spaceRow+2;
+          arry[2]=spaceColumn;
+          arrx[3]=spaceRow+2;
+          arry[3]=spaceColumn+1;
+    }
+    else if(rotation==1)
+    {
+          arrx[0]=spaceRow;
+          arry[0]=spaceColumn;
+          arrx[1]=spaceRow;
+          arry[1]=spaceColumn+1;
+          arrx[2]=spaceRow;
+          arry[2]=spaceColumn+2;
+          arrx[3]=spaceRow+1;
+          arry[3]=spaceColumn;
+    }
+    else if(rotation==2)
+    {
+          arrx[0]=spaceRow;
+          arry[0]=spaceColumn;
+          arrx[1]=spaceRow;
+          arry[1]=spaceColumn+1;
+          arrx[2]=spaceRow+1;
+          arry[2]=spaceColumn+1;
+          arrx[3]=spaceRow+2;
+          arry[3]=spaceColumn+1;
+     }
+     else
+     {
+          arrx[0]=spaceRow;
+          arry[0]=spaceColumn+2;
+          arrx[1]=spaceRow+1;
+          arry[1]=spaceColumn;
+          arrx[2]=spaceRow+1;
+          arry[2]=spaceColumn+1;
+          arrx[3]=spaceRow+1;
+          arry[3]=spaceColumn+2;
+     }
      int empty = 0; 
      for (int i = 0; i < row; ++i)
      {
@@ -86,10 +122,11 @@ int main(int argc, char * argv[])
         printf("Second input too large\n");
         return 3;
     }
+    int rotation = 0;
     char move;
     while (1)
     {
-        draw(spaceRow, spaceColumn, rowMax, columnMax); 
+        draw(rotation, spaceRow, spaceColumn, rowMax, columnMax); 
         printf("Press W to move up, press A to move left, press S to move down, press D to move rigth ");
          char ch;
         // Attempt to read 1 byte from stdin
@@ -115,28 +152,28 @@ int main(int argc, char * argv[])
                     spaceColumn--;
                 }
             }
-            else  if (ch == 's')
-            {
-                if (spaceRow < rowMax-3)
+            else if (ch == 's' || ch == 'S')
+            {        
+                if (spaceRow < rowMax - 3)
                 {
-                   spaceRow++;
+                    spaceRow++;
                 }
             }
-            else if (ch == 'd')
+            else if (ch == 'd' || ch == 'D')
             {
-                if (spaceColumn < columnMax-2)
+                if (spaceColumn < columnMax - 2)
                 {
-                   spaceColumn++;
+                    spaceColumn++;
                 }
             }
-           /* else
+            else if (ch == 'r' || ch == 'R')
             {
-                break;
-            }*/
+                rotation = (rotation + 1) % 4;
+            }
         }
-        if (spaceRow < rowMax-3)
+        if (spaceRow < rowMax - 3)
         {
-             spaceRow++;     
+            spaceRow++;
         }
         sleep(1);
         fflush(stdout);
@@ -145,4 +182,4 @@ int main(int argc, char * argv[])
     reset_terminal_mode(&old_settings);
     printf("\nProgram exited.\n");
     return 0;
-} 
+ }
