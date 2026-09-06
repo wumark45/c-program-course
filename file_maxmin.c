@@ -44,9 +44,9 @@ int main(int argc,char*argv[])
     }
     char buf[1000];
     int arr[100];
-    int count=0;
     while(fgets(buf,sizeof(buf),fp)!=NULL)
     {
+        int count = 0;
         char delims[]=",";
         char*token=strtok(buf,delims);
         while(token!=NULL)
@@ -55,11 +55,10 @@ int main(int argc,char*argv[])
             count++;
             token=strtok(NULL,delims);
         }
+        int min=find_min(arr,count);
+        int max=find_max(arr,count);
+        printf("Min:%d,Max:%d\n",min,max);
     }
-    int min=find_min(arr,count);
-    int max=find_max(arr,count);
     fclose(fp);
-    printf("Min:%d\n",min);
-    printf("Max:%d\n",max);
     return 0;
 }
